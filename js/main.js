@@ -35,24 +35,16 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // 2. Google Ads Conversion Tracking (Phone Calls Only)
-  const GOOGLE_ADS_CONVERSION_TARGET = 'AW-18406219764/7nr4CIbgz_0cEPS_4shE';
-
-  function reportConversion(eventLabel) {
-    if (typeof window.gtag === 'function') {
-      window.gtag('event', 'conversion', {
-        'send_to': GOOGLE_ADS_CONVERSION_TARGET,
-        'event_category': 'Contact Lead',
-        'event_label': eventLabel
-      });
-      console.log('Google Ads conversion reported:', eventLabel);
-    }
-  }
-
-  // Detects clicks on phone links
   const phoneLinks = document.querySelectorAll('a[href^="tel:"]');
   phoneLinks.forEach((link) => {
-    link.addEventListener('click', () => {
-      reportConversion('Phone Call Click');
-    });
+    // Fallback for any dynamic phone links without inline onclick
+    if (!link.hasAttribute('onclick')) {
+      link.addEventListener('click', (e) => {
+        if (typeof window.gtag_report_conversion === 'function') {
+          e.preventDefault();
+          window.gtag_report_conversion(link.getAttribute('href'));
+        }
+      });
+    }
   });
 });
