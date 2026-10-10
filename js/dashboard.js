@@ -6,7 +6,6 @@
 // Default data representing current production site
 const defaultSiteData = {
   phone: '94093969',
-  whatsapp: '94093969',
   brandTitle: 'مقاول الكويت',
   brandSubtitle: 'أعمال التكسير والترميم والبناء',
   heroTitle: 'مقاول تكسير وهدم وترميمات في الكويت',
@@ -133,7 +132,6 @@ function initFormBindings() {
   };
 
   setVal('input-phone', siteData.phone);
-  setVal('input-whatsapp', siteData.whatsapp);
   setVal('input-brand-title', siteData.brandTitle);
   setVal('input-brand-sub', siteData.brandSubtitle);
   setVal('input-hero-title', siteData.heroTitle);
@@ -154,7 +152,6 @@ function initFormBindings() {
   };
 
   watch('input-phone', 'phone');
-  watch('input-whatsapp', 'whatsapp');
   watch('input-brand-title', 'brandTitle');
   watch('input-brand-sub', 'brandSubtitle');
   watch('input-hero-title', 'heroTitle');
@@ -244,7 +241,6 @@ function refreshPreview() {
 // 5. Generate Production HTML
 function generateProductionHTML() {
   const cleanPhone = siteData.phone.replace(/[^0-9]/g, '');
-  const cleanWa = siteData.whatsapp.replace(/[^0-9]/g, '');
 
   const servicesHTML = siteData.services.map(srv => `
           <!-- Service ${srv.id} -->
@@ -295,7 +291,7 @@ function generateProductionHTML() {
   <!-- Canonical URL -->
   <link rel="canonical" href="https://moqawel-kuwait.com/">
 
-  <!-- Open Graph / WhatsApp -->
+  <!-- Open Graph / Social Media -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ar_KW">
   <meta property="og:title" content="${siteData.metaTitle}">
@@ -403,14 +399,7 @@ ${schemaItems}
             <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
             </svg>
-            <span>اتصل الآن: ${cleanPhone}</span>
-          </a>
-
-          <a href="https://wa.me/965${cleanWa}" class="btn btn-whatsapp btn-large" target="_blank" rel="noopener noreferrer" aria-label="تواصل معنا عبر واتساب على ${cleanWa}">
-            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.15c-.24.67-1.39 1.29-1.92 1.37-.51.08-1.17.11-3.37-.8-2.67-1.11-4.39-3.83-4.52-4.01-.13-.18-1.08-1.44-1.08-2.74s.68-1.94.92-2.2c.24-.26.53-.33.7-.33.18 0 .36 0 .52.01.17.01.4.06.6.53.22.5.76 1.85.83 1.99.07.13.11.29.02.47-.09.18-.13.29-.27.45-.13.16-.29.36-.41.48-.13.13-.27.28-.12.54.16.26.69 1.14 1.48 1.85 1.02.91 1.88 1.19 2.14 1.33.27.13.42.11.58-.07.16-.18.68-.79.86-1.06.18-.26.36-.22.61-.13.24.09 1.55.73 1.81.86.27.13.45.2.51.31.07.11.07.65-.17 1.32z"/>
-            </svg>
-            <span>محادثة واتساب</span>
+            <span>اتصل الآن مباشرة: ${cleanPhone}</span>
           </a>
         </div>
 
@@ -561,7 +550,7 @@ ${servicesHTML}
         <div class="cta-banner-box">
           <h2>تحتاج مقاول في الكويت لمشروعك؟</h2>
           <p>
-            تواصل معنا الآن مباشرة عبر الهاتف أو الواتساب، وسنكون جاهزين للمعاينة وتحديد التفاصيل بدقة وسرعة وبدون أي تعقيد.
+            تواصل معنا الآن مباشرة عبر الهاتف، وسنكون جاهزين للمعاينة وتحديد التفاصيل بدقة وسرعة وبدون أي تعقيد.
           </p>
           <div class="cta-phone-highlight">${cleanPhone}</div>
           <div class="cta-buttons">
@@ -569,13 +558,7 @@ ${servicesHTML}
               <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
               </svg>
-              <span>اتصل الآن: ${cleanPhone}</span>
-            </a>
-            <a href="https://wa.me/965${cleanWa}" class="btn btn-whatsapp btn-large" target="_blank" rel="noopener noreferrer" aria-label="محادثة واتساب على ${cleanWa}">
-              <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.15c-.24.67-1.39 1.29-1.92 1.37-.51.08-1.17.11-3.37-.8-2.67-1.11-4.39-3.83-4.52-4.01-.13-.18-1.08-1.44-1.08-2.74s.68-1.94.92-2.2c.24-.26.53-.33.7-.33.18 0 .36 0 .52.01.17.01.4.06.6.53.22.5.76 1.85.83 1.99.07.13.11.29.02.47-.09.18-.13.29-.27.45-.13.16-.29.36-.41.48-.13.13-.27.28-.12.54.16.26.69 1.14 1.48 1.85 1.02.91 1.88 1.19 2.14 1.33.27.13.42.11.58-.07.16-.18.68-.79.86-1.06.18-.26.36-.22.61-.13.24.09 1.55.73 1.81.86.27.13.45.2.51.31.07.11.07.65-.17 1.32z"/>
-              </svg>
-              <span>واتساب ${cleanWa}</span>
+              <span>اتصل الآن مباشرة: ${cleanPhone}</span>
             </a>
           </div>
         </div>
@@ -719,7 +702,7 @@ ${servicesHTML}
               </svg>
             </button>
             <div class="faq-answer">
-              <p>يمكنك الاتصال بنا مباشرة على الرقم <strong>${cleanPhone}</strong> أو الضغط على زر الاتصال في الصفحة، كما يمكنك مراسلتنا عبر الواتساب على نفس الرقم لمعاينة موقعك وتحديد التفاصيل بدقة وسرعة.</p>
+              <p>يمكنك الاتصال بنا مباشرة على الرقم <strong>${cleanPhone}</strong> أو الضغط على زر الاتصال في الصفحة لمعاينة موقعك وتحديد كافة التفاصيل والأسعار بدقة وسرعة.</p>
             </div>
           </div>
         </div>
@@ -757,19 +740,12 @@ ${servicesHTML}
   </footer>
 
   <!-- 10. Sticky Mobile Call Bar -->
-  <aside class="sticky-call-bar" aria-label="أزرار الاتصال السريع للجوال">
+  <aside class="sticky-call-bar" aria-label="شريط الاتصال السريع للجوال">
     <a href="tel:${cleanPhone}" class="sticky-call-btn" aria-label="اتصل الآن على رقم ${cleanPhone}">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
       </svg>
-      <span>اتصل الآن: ${cleanPhone}</span>
-    </a>
-
-    <a href="https://wa.me/965${cleanWa}" class="sticky-wa-btn" target="_blank" rel="noopener noreferrer" aria-label="تواصل واتساب">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.15c-.24.67-1.39 1.29-1.92 1.37-.51.08-1.17.11-3.37-.8-2.67-1.11-4.39-3.83-4.52-4.01-.13-.18-1.08-1.44-1.08-2.74s.68-1.94.92-2.2c.24-.26.53-.33.7-.33.18 0 .36 0 .52.01.17.01.4.06.6.53.22.5.76 1.85.83 1.99.07.13.11.29.02.47-.09.18-.13.29-.27.45-.13.16-.29.36-.41.48-.13.13-.27.28-.12.54.16.26.69 1.14 1.48 1.85 1.02.91 1.88 1.19 2.14 1.33.27.13.42.11.58-.07.16-.18.68-.79.86-1.06.18-.26.36-.22.61-.13.24.09 1.55.73 1.81.86.27.13.45.2.51.31.07.11.07.65-.17 1.32z"/>
-      </svg>
-      <span>واتساب</span>
+      <span>اتصل الآن مباشرة: ${cleanPhone}</span>
     </a>
   </aside>
 

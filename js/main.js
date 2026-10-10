@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 2. Google Ads Conversion Tracking (Calls & WhatsApp)
+  // 2. Google Ads Conversion Tracking (Phone Calls Only)
   const GOOGLE_ADS_CONVERSION_TARGET = 'AW-18406219764/7nr4CIbgz_0cEPS_4shE';
 
   function reportConversion(eventLabel) {
@@ -53,14 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
   phoneLinks.forEach((link) => {
     link.addEventListener('click', () => {
       reportConversion('Phone Call Click');
-    });
-  });
-
-  // Detects clicks on WhatsApp links
-  const waLinks = document.querySelectorAll('a[href*="wa.me"]');
-  waLinks.forEach((link) => {
-    link.addEventListener('click', () => {
-      reportConversion('WhatsApp Click');
     });
   });
 });
