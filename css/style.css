@@ -249,29 +249,107 @@ button {
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.6rem;
 }
 
 .header-phone-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: center;
+  gap: 0.45rem;
   background-color: var(--color-primary);
   color: #000000;
-  padding: 0.55rem 1rem;
+  padding: 0.55rem 0.95rem;
   border-radius: var(--radius-sm);
-  font-weight: 700;
+  font-weight: 800;
   font-size: 0.95rem;
+  transition: var(--transition);
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
+  text-decoration: none;
 }
 
 .header-phone-btn:hover {
   background-color: var(--color-primary-dark);
+  transform: translateY(-1px);
 }
 
-@media (max-width: 520px) {
-  .brand-text span { display: none; }
-  .header-phone-btn span { display: none; }
-  .header-phone-btn { padding: 0.55rem 0.75rem; }
+.header-wa-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  background-color: var(--color-whatsapp);
+  color: #ffffff;
+  padding: 0.55rem 0.95rem;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: var(--transition);
+  box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
+  text-decoration: none;
+}
+
+.header-wa-btn:hover {
+  background-color: var(--color-whatsapp-dark);
+  transform: translateY(-1px);
+  color: #ffffff;
+}
+
+.header-phone-btn .btn-icon,
+.header-wa-btn .btn-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .brand-text span {
+    display: none;
+  }
+  .header-actions {
+    gap: 0.4rem;
+  }
+  .header-phone-btn,
+  .header-wa-btn {
+    padding: 0.45rem 0.65rem;
+    font-size: 0.88rem;
+    gap: 0.35rem;
+  }
+  .header-phone-btn .btn-icon,
+  .header-wa-btn .btn-icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media (max-width: 420px) {
+  .brand-text h1 {
+    font-size: 0.95rem;
+  }
+  .brand-icon {
+    width: 34px;
+    height: 34px;
+  }
+  .brand-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+  .header-phone-btn,
+  .header-wa-btn {
+    padding: 0.4rem 0.55rem;
+    font-size: 0.82rem;
+  }
+}
+
+@media (max-width: 340px) {
+  .header-phone-btn span,
+  .header-wa-btn span {
+    display: none;
+  }
+  .header-phone-btn,
+  .header-wa-btn {
+    padding: 0.45rem;
+  }
 }
 
 /* ==========================================================================
@@ -504,6 +582,143 @@ button {
   background-color: var(--color-primary);
   color: #000000;
   border-color: var(--color-primary);
+}
+
+/* ==========================================================================
+   Spotlight Feature Sections (Painting & Decor)
+   ========================================================================== */
+.spotlight-section {
+  padding: 4.5rem 0;
+  background-color: var(--color-dark);
+  border-bottom: 1px solid var(--color-dark-border);
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight-section-alt {
+  background-color: #161b22;
+}
+
+.spotlight-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.25rem;
+  align-items: center;
+}
+
+@media (min-width: 992px) {
+  .spotlight-grid {
+    grid-template-columns: 1.05fr 1fr;
+    gap: 3.5rem;
+  }
+  
+  .spotlight-grid-reverse .spotlight-img-col {
+    order: 2;
+  }
+  
+  .spotlight-grid-reverse .spotlight-content {
+    order: 1;
+  }
+}
+
+.spotlight-img-wrap {
+  position: relative;
+  width: 100%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-dark-border);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+  aspect-ratio: 16 / 10;
+  background-color: #0b0e12;
+}
+
+.spotlight-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  display: block;
+}
+
+.spotlight-img-wrap:hover img {
+  transform: scale(1.03);
+}
+
+.spotlight-badge {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background: rgba(18, 22, 27, 0.9);
+  backdrop-filter: blur(8px);
+  color: var(--color-primary);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  padding: 0.45rem 0.9rem;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+.spotlight-content .section-title {
+  text-align: right;
+  margin-bottom: 0.85rem;
+}
+
+.spotlight-desc {
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.spotlight-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 2rem;
+  padding: 0;
+}
+
+.spotlight-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  color: #e2e8f0;
+  font-size: 0.98rem;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.spotlight-feature-icon {
+  width: 24px;
+  height: 24px;
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--color-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.spotlight-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+@media (min-width: 520px) {
+  .spotlight-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
 }
 
 /* ==========================================================================
@@ -896,28 +1111,218 @@ button {
 }
 
 .sticky-call-btn {
-  flex: 1;
-  width: 100%;
+  flex: 6;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.6rem;
+  gap: 0.5rem;
   background-color: var(--color-primary);
   color: #000000;
   font-weight: 800;
-  font-size: 1.15rem;
-  padding: 0.85rem 1rem;
+  font-size: 1.05rem;
+  padding: 0.8rem 0.6rem;
   border-radius: var(--radius-sm);
   text-align: center;
-  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.45);
+  box-shadow: 0 2px 10px rgba(245, 158, 11, 0.4);
 }
 
 .sticky-call-btn:active {
   background-color: var(--color-primary-dark);
 }
 
+.sticky-wa-btn {
+  flex: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  background-color: var(--color-whatsapp);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.8rem 0.6rem;
+  border-radius: var(--radius-sm);
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(37, 211, 102, 0.4);
+}
+
+.sticky-wa-btn:active {
+  background-color: var(--color-whatsapp-dark);
+}
+
 @media (min-width: 768px) {
   .sticky-call-bar {
     display: none;
+  }
+}
+
+/* ==========================================================================
+   Floating WhatsApp Button (General / Persistent)
+   ========================================================================== */
+.floating-wa-btn {
+  position: fixed;
+  bottom: 84px;
+  left: 16px;
+  width: 54px;
+  height: 54px;
+  background-color: var(--color-whatsapp);
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 18px rgba(37, 211, 102, 0.5);
+  z-index: 1000;
+  transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+  animation: wa-pulse 2.2s infinite;
+  text-decoration: none;
+}
+
+.floating-wa-online {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 14px;
+  height: 14px;
+  background-color: #22c55e;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.8);
+}
+
+.floating-wa-btn svg {
+  width: 30px;
+  height: 30px;
+  fill: currentColor;
+}
+
+.floating-wa-btn:hover,
+.floating-wa-btn:focus {
+  transform: scale(1.1);
+  background-color: var(--color-whatsapp-dark);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.65);
+}
+
+.floating-wa-tooltip {
+  position: absolute;
+  right: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #1c222b;
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.45rem 0.8rem;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--color-dark-border);
+}
+
+.floating-wa-tooltip::after {
+  content: '';
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent transparent #1c222b;
+}
+
+.floating-wa-btn:hover .floating-wa-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+@keyframes wa-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 14px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+@media (max-width: 767px) {
+  .floating-wa-tooltip {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .floating-wa-btn {
+    bottom: 28px;
+    left: 28px;
+    width: 62px;
+    height: 62px;
+  }
+  .floating-wa-btn svg {
+    width: 34px;
+    height: 34px;
+  }
+  .floating-wa-online {
+    top: 4px;
+    right: 4px;
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* ==========================================================================
+   Mobile Responsiveness Polish
+   ========================================================================== */
+@media (max-width: 767px) {
+  .spotlight-section {
+    padding: 3.25rem 0;
+  }
+  .spotlight-content .section-title {
+    text-align: center;
+  }
+  .spotlight-content .section-tag {
+    display: table;
+    margin: 0 auto 0.85rem;
+  }
+  .spotlight-desc {
+    text-align: center;
+    font-size: 1rem;
+  }
+  .spotlight-features {
+    text-align: right;
+  }
+  .services-section,
+  .why-section,
+  .gallery-section,
+  .areas-section,
+  .faq-section {
+    padding: 3.25rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .section-title {
+    font-size: 1.5rem;
+  }
+  .hero-title {
+    font-size: 1.75rem;
+  }
+  .hero-subtitle {
+    font-size: 1.05rem;
+  }
+  .btn-large {
+    padding: 0.9rem 1.35rem;
+    font-size: 1.1rem;
+    width: 100%;
   }
 }
